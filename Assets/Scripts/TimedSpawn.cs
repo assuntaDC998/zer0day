@@ -20,6 +20,7 @@ public class TimedSpawn : MonoBehaviour
     public void SpawnObject()
     {
         GameObject clone = Instantiate(spawnee, new Vector3(10.0f, 0.12f, 622.28f), transform.rotation);
+        
         clone.active = true;
         if (stopSpawning)
         {
