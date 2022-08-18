@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: cc311a559b5390d40bb2f5b8c2861020
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Roblox Font
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d937d0306efa6494fbb33ba477924224, type: 3}
+  - {fileID: 12800000, guid: 473db876b7367ce48ae301d171971aab, type: 3}
+  - {fileID: 12800000, guid: 4abd258bdb014b64080635fa11339bc4, type: 3}
+  - {fileID: 12800000, guid: 86a999a661b79e24e8d947366d77d981, type: 3}
+  - {fileID: 12800000, guid: 8941e855665260c4abaed2947f638ca6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

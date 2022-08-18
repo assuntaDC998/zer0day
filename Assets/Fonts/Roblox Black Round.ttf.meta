@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9a96a07b12182a8429c5656e32bb6208
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Roblox Black Round
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b6a5861de5649604fb1d74209a0752a5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
