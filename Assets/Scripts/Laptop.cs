@@ -19,14 +19,10 @@ public class Laptop : MonoBehaviour
 
     private void OnCollisionEnter(Collision coll)
     {
-        
-        if (coll.gameObject.GetComponent<PacketScript>().type.Equals("Mail"))
-        {
-            coll.gameObject.SetActive(false);
-        }
-        
-
-        //coll.gameObject.active = false;
+        coll.gameObject.SetActive(false);
+        Debug.Log(coll.gameObject.tag + " collided with " + this.name);
+        coll.gameObject.transform.position = GameObject.Find("OvestLaptop").transform.position;
+        coll.gameObject.SetActive(true);
     }
 
 }

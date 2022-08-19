@@ -12,46 +12,45 @@ using UnityEngine.AI;
         private NavMeshAgent agent;
         private int destPoint = 0;
 
-    public static explicit operator PacketScript(GameObject v)
-    {
-        throw new NotImplementedException();
-    }
+        public static explicit operator PacketScript(GameObject v)
+        {
+            throw new NotImplementedException();
+        }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+        // Start is called before the first frame update
+        void Start()
+        {
             agent = GetComponent<NavMeshAgent>();
             GotoNextPoint();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-            GotoNextPoint();
-    }
-
-    void GotoNextPoint()
-    {
-        // Returns if no points have been set up
-        if (points.Length == 0)
-            return;
-
-        if (destPoint < points.Length){
-            // Set the agent to go to the currently selected destination.
-            agent.destination = points[destPoint].position;
-            // Choose the next point in the array as the destination,
-            // cycling to the start if necessary.
-            destPoint = (destPoint + 1);
-            return;
         }
-        /*
-        GameObject enemy = GameObject.Find("Enemy");
-        enemy.active = false;
 
-        enemy.transform.position = new Vector3(10.0f, 0.12f, 622.28f);
-        enemy.active = true;
-        destPoint = 0;
-        */
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                GotoNextPoint();
+        }
+
+        void GotoNextPoint()
+        {
+            // Returns if no points have been set up
+            if (points.Length == 0)
+                return;
+
+            if (destPoint < points.Length){
+                // Set the agent to go to the currently selected destination.
+                agent.destination = points[destPoint].position;
+                // Choose the next point in the array as the destination,
+                // cycling to the start if necessary.
+                destPoint++;
+                return;
+            }
+            //else
+            //{
+
+              //  destPoint = 0;
+                
+            //}
+
+        }
     }
