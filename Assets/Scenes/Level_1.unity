@@ -1331,9 +1331,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 69
       objectReference: {fileID: 0}
+    - target: {fileID: 190724640008944308, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
+      propertyPath: LocalizationKey
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 554320292184380841, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
+      propertyPath: LocalizationKey
+      value: Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 1264680581072989681, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631025615965288505, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
+      propertyPath: LocalizationKey
+      value: ExitToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 2269810932823713367, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_Name
@@ -1438,6 +1450,10 @@ PrefabInstance:
     - target: {fileID: 3704579764504972130, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704579764616995582, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
+      propertyPath: current
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3704579765092635153, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_IsActive
@@ -1627,6 +1643,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6578503081468496353, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
+      propertyPath: m_Name
+      value: ResumeButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6695426367337901982, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_SizeDelta.x
       value: 100
@@ -1645,7 +1665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7513327649863094316, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513327649863094316, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
+      propertyPath: LocalizationKey
+      value: Options
       objectReference: {fileID: 0}
     - target: {fileID: 7876608052732152149, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_fontStyle
@@ -1669,7 +1693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8266696442193864936, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9125967783265628538, guid: e26f256b9465e08488f2b3d09d8a2ecc, type: 3}
       propertyPath: m_Color.a

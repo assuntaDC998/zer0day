@@ -562,6 +562,8 @@ MonoBehaviour:
     Id: 0
   - Name: OptionsMenu
     Id: 400476944
+  - Name: PauseMenu
+    Id: 1218046369
   SaveFolder: {fileID: 102900000, guid: c392831e85f928548b8494fefd912562, type: 3}
 --- !u!4 &116496142
 Transform:
