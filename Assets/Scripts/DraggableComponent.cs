@@ -29,8 +29,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     {
         if (!CanDrag) return;
         OnDragHandler?.Invoke(data);
-        if (FollowCursor)
-            rectTransform.anchoredPosition += data.delta / canvas.scaleFactor;
+        if (FollowCursor) rectTransform.anchoredPosition += data.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData data)
