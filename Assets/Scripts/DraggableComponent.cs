@@ -29,29 +29,51 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     {
         if (!CanDrag) return;
         OnDragHandler?.Invoke(data);
-        if (FollowCursor) rectTransform.anchoredPosition += data.delta / canvas.scaleFactor;
+        //if (FollowCursor) rectTransform.anchoredPosition += data.delta / canvas.scaleFactor;
+        if (FollowCursor) transform.position = Input.mousePosition / canvas.scaleFactor;
+  
     }
 
     public void OnEndDrag(PointerEventData data)
     {
         if (!CanDrag) return;
-        var results = new List<RaycastResult>();
+        /*var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(data, results);
         DropArea dropArea = null;
         foreach (var result in results) {
             dropArea = result.gameObject.GetComponent<DropArea>();
             if (dropArea != null) break;
         }
+
+        Debug.Log(dropArea == null);
+
         if (dropArea != null)
         {
-            if (dropArea.Accepts(this))
+             if (dropArea.Accepts(this))
             {
                 dropArea.Drop(this);
                 OnEndDragHandler?.Invoke(data, true);
                 return;
             }
+        }*/
+
+        RaycastHit hit = new RaycastHit();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, 1000) && hit.collider!=null)
+        {
+            if (hit.collider.gameObject.CompareTag("Laptop"))
+            {
+                rectTransform.position = hit.point;
+            }
+            else
+                failDrop(data);
         }
-        // failed drop
+        else
+            failDrop(data);
+
+    }
+
+    private void failDrop(PointerEventData data) {
         rectTransform.anchoredPosition = StartPosition;
         OnEndDragHandler?.Invoke(data, false);
     }

@@ -24,6 +24,7 @@ public class Laptop : MonoBehaviour
     protected virtual void Awake()
     {
         DropArea = GetComponent<DropArea>() ?? gameObject.AddComponent<DropArea>();
+        //DropArea = gameObject.AddComponent<DropArea>();
         DropArea.OnDropHandler += OnItemDropped;
     }
 
