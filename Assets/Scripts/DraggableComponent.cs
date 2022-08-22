@@ -14,6 +14,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
 
     private RectTransform rectTransform;
     private Canvas canvas;
+    private GameObject duplicate;
 
     public bool FollowCursor { get; set; } = true;
     public Vector3 StartPosition;
@@ -22,6 +23,10 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
 
     public void OnBeginDrag(PointerEventData data){
         if (!CanDrag) return;
+        duplicate = Instantiate(gameObject, rectTransform, false);
+        duplicate.transform.SetParent(gameObject.transform.parent);
+        duplicate.SetActive(true);
+
         OnBeginDragHandler?.Invoke(data);
     }
 
@@ -29,9 +34,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     {
         if (!CanDrag) return;
         OnDragHandler?.Invoke(data);
-        //if (FollowCursor) rectTransform.anchoredPosition += data.delta / canvas.scaleFactor;
-        if (FollowCursor) transform.position = Input.mousePosition / canvas.scaleFactor;
-  
+        if (FollowCursor) rectTransform.anchoredPosition += data.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData data)
@@ -61,6 +64,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 1000) && hit.collider!=null)
         {
+            // TO ADAPT
             if (hit.collider.gameObject.CompareTag("Laptop"))
             {
                 rectTransform.position = hit.point;
@@ -74,6 +78,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     }
 
     private void failDrop(PointerEventData data) {
+        Destroy(duplicate);
         rectTransform.anchoredPosition = StartPosition;
         OnEndDragHandler?.Invoke(data, false);
     }
