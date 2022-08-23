@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,11 @@ public class Laptop : MonoBehaviour
 {
     [SerializeField]
     public GameObject startPoint;
-
-    protected DropArea DropArea;
+    private bool antivirus;
+ 
 
     void Start()
-    {
-
+    { 
 
     }
 
@@ -20,18 +20,29 @@ public class Laptop : MonoBehaviour
     {
         
     }
-
-    protected virtual void Awake()
-    {
-        DropArea = GetComponent<DropArea>() ?? gameObject.AddComponent<DropArea>();
-        //DropArea = gameObject.AddComponent<DropArea>();
-        DropArea.OnDropHandler += OnItemDropped;
+    public void addAntivirus() { 
+    
+    
     }
 
-    private void OnItemDropped(DraggableComponent draggable) {
-        draggable.transform.position = transform.position;
+    // to generalize
+    public bool requestSetAntivirus() {
+
+        if (!antivirus) {
+            antivirus = true;
+            setAntivirus(); //???
+            return true;
+        }
+        return false;
     }
 
+    private void setAntivirus() {
+        Debug.Log("Antivirus Added on " + gameObject.name);
+        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        sphere.transform.position = gameObject.transform.position;
+        sphere.transform.localScale = gameObject.transform.localScale;
+        sphere.GetComponent<MeshRenderer>().material = (Material)Resources.Load("DocumentMaterial");
+    }
 
     private void OnCollisionEnter(Collision coll)
     {
@@ -41,4 +52,9 @@ public class Laptop : MonoBehaviour
         coll.gameObject.SetActive(true);
     }
 
+    public static explicit operator Laptop(GameObject v)
+    {
+        throw new NotImplementedException();
+    }
 }
+

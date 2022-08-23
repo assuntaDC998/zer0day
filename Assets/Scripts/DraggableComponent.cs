@@ -7,59 +7,53 @@ using UnityEngine.EventSystems;
 
 public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
- 
-    public event Action<PointerEventData> OnBeginDragHandler;
-    public event Action<PointerEventData> OnDragHandler;
-    public event Action<PointerEventData, bool> OnEndDragHandler;
 
     private RectTransform rectTransform;
     private Canvas canvas;
     private GameObject duplicate;
+    private Vector3 startPosition;
+    private int count = 1; // number of copies
 
     public bool FollowCursor { get; set; } = true;
     public Vector3 StartPosition;
     public bool CanDrag { get; set; } = true;
 
 
+    private GameObject Duplicate() {
+        GameObject duplicate = Instantiate(gameObject);
+        duplicate.transform.SetParent(gameObject.transform.parent);
+
+        RectTransform dRT = duplicate.GetComponent<RectTransform>();
+        dRT.anchoredPosition = rectTransform.anchoredPosition;
+        dRT.offsetMin = rectTransform.offsetMin;
+        dRT.offsetMax = rectTransform.offsetMax;
+        dRT.position = rectTransform.position;
+        dRT.rotation = rectTransform.rotation;
+        duplicate.transform.localScale = rectTransform.localScale;
+        count++;
+        return duplicate;
+    }
+
     public void OnBeginDrag(PointerEventData data){
         if (!CanDrag) return;
-        duplicate = Instantiate(gameObject, rectTransform, false);
-        duplicate.transform.SetParent(gameObject.transform.parent);
-        duplicate.SetActive(true);
+        duplicate = Duplicate();
 
-        OnBeginDragHandler?.Invoke(data);
+        /*
+        if (rectTransform.position.Equals(startPosition)) {
+            duplicate = Duplicate();
+            duplicate.SetActive(true);
+        }*/
     }
 
     public void OnDrag(PointerEventData data)
     {
         if (!CanDrag) return;
-        OnDragHandler?.Invoke(data);
         if (FollowCursor) rectTransform.anchoredPosition += data.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData data)
     {
         if (!CanDrag) return;
-        /*var results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(data, results);
-        DropArea dropArea = null;
-        foreach (var result in results) {
-            dropArea = result.gameObject.GetComponent<DropArea>();
-            if (dropArea != null) break;
-        }
-
-        Debug.Log(dropArea == null);
-
-        if (dropArea != null)
-        {
-             if (dropArea.Accepts(this))
-            {
-                dropArea.Drop(this);
-                OnEndDragHandler?.Invoke(data, true);
-                return;
-            }
-        }*/
-
         RaycastHit hit = new RaycastHit();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 1000) && hit.collider!=null)
@@ -68,9 +62,10 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
             if (hit.collider.gameObject.CompareTag("Laptop"))
             {
                 rectTransform.position = hit.point;
+                //Laptop laptop = (Laptop)hit.collider.gameObject;
+                //laptop.requestSetAntivirus();
             }
-            else
-                failDrop(data);
+            else failDrop(data);
         }
         else
             failDrop(data);
@@ -78,9 +73,12 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     }
 
     private void failDrop(PointerEventData data) {
-        Destroy(duplicate);
+        if (count > 1)
+        {
+            Destroy(duplicate);
+            count--;
+        }
         rectTransform.anchoredPosition = StartPosition;
-        OnEndDragHandler?.Invoke(data, false);
     }
 
     public void OnInitializePotentialDrag(PointerEventData data)
@@ -93,6 +91,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GameObject.Find("GameUI").GetComponent<Canvas>();
+        startPosition = rectTransform.position;
     }
 
 
