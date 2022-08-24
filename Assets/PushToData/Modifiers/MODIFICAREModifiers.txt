@@ -1,0 +1,41 @@
+{
+  "modifiers":[
+    {"CID":"001",
+      "m_type":"FT_WEIGHT",
+      "m_fFactor":"2,0",
+      "duration": "",
+	"infinite":"true",
+	"oneshot":"false"
+      
+    }, {"CID":"002",
+      "m_type":"FT_AMMO_COUNT",
+      "m_fFactor":"0,5",
+      "duration": "",
+	"infinite":"false",
+	"oneshot":"true"
+
+    }, {"CID":"003",
+      "m_type":"FT_CHANCE_OF_SHOOTING",
+      "m_fFactor":"0,5",
+      "duration": "10",
+	"infinite":"false",
+	"oneshot":"false"
+      
+    }, {"CID":"004",
+      "m_type":"FT_WEIGHT",
+      "m_fFactor":"2",
+      "duration": "10",
+	"infinite":"false",
+	"oneshot":"false"
+      
+    }, {"CID":"telescope",
+      "m_type":"FT_INCREASED_FOV",
+      "m_fFactor":"true",
+      "duration": "10",
+	"infinite":"false",
+	"oneshot":"false"
+      
+    }
+    ]
+}
+   

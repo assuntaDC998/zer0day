@@ -59,9 +59,13 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         if (Physics.Raycast(ray, out hit, 1000) && hit.collider!=null)
         {
             // TO ADAPT
+
+            //if(LevelManager.RequestAddComponent(gameObject.tag,hit.collider.GameObject.tag))
+            //  laptop.requestSetAntivirus();
             if (hit.collider.gameObject.CompareTag("Laptop"))
             {
-                rectTransform.position = hit.point;
+                rectTransform.position = hit.point;        
+
                 //Laptop laptop = (Laptop)hit.collider.gameObject;
                 //laptop.requestSetAntivirus();
             }

@@ -1,0 +1,6 @@
+{
+	"FT_MAX_ANTIVIRUS":"1",
+	"FT_MAX_FIREWALL":"0",
+	"FT_MAX_IDPS":"0",
+	"FT_MAX_BACKUP":"1"
+}

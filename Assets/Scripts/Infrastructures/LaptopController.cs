@@ -1,25 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
-
-public class Laptop : MonoBehaviour
+public class LaptopController : InfrastructureController
 {
     [SerializeField]
     public GameObject startPoint;
     private bool antivirus;
- 
 
-    void Start()
-    { 
-
-    }
-
-    void Update()
-    {
-        
-    }
     public void addAntivirus() { 
     
     
@@ -47,14 +36,22 @@ public class Laptop : MonoBehaviour
     private void OnCollisionEnter(Collision coll)
     {
         coll.gameObject.SetActive(false);
-        Debug.Log(coll.gameObject.tag + " collided with " + this.name);
         coll.gameObject.transform.position = startPoint.transform.position;
         coll.gameObject.SetActive(true);
     }
 
-    public static explicit operator Laptop(GameObject v)
+    public override void Awake()
     {
-        throw new NotImplementedException();
+        base.Awake();
+
+        string featuresFile = new StreamReader("Assets/Push-To-Data/Feature/Infrastructure/laptop.json").ReadToEnd();
+        mapper = JsonUtility.FromJson<InfrastructuresFeaturesJsonMap>(featuresFile);
+
+        this.features = mapper.todict();
+    }
+
+    public override void Update()
+    {
+        base.Update();
     }
 }
-

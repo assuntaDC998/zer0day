@@ -1,0 +1,7 @@
+creare defensecontroller, antiviruscontroller,defensemodifier //succ firewallcontroller, idpscontroller
+modificare pushtodata/modifiers/events e modifiers
+json delle difese mancanti
+json dei malware
+pushtodata dei malware
+
+check dei commenti
