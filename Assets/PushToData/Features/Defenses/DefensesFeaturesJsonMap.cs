@@ -8,10 +8,10 @@ using DefensesFeatures;
 public class DefensesFeaturesJsonMap:Dictionable
 {
 
-    private float FT_EFFICIENCY;
-    private float FT_FALSE_POSITIVES;
-    private float FT_DURATION;
-    private int FT_COST;
+    public float FT_EFFICIENCY;
+    public float FT_FALSE_POSITIVES;
+    public float FT_DURATION;
+    public int FT_COST;
 
     public Dictionary<System.Object, Feature> todict()
     {

@@ -9,6 +9,7 @@ TagManager:
   - Document
   - Executable
   - Laptop
+  - AntiVirus
   layers:
   - Default
   - TransparentFX

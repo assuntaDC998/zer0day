@@ -23,6 +23,7 @@ namespace InfrastructuresFeatures
     {
         public MaxAntiVirusInfrastructureFeature(System.Object baseValue, FeatureType featureName) : base(baseValue, featureName)
         {
+            
         }
 
         public override void performeModifier(Modifier m)

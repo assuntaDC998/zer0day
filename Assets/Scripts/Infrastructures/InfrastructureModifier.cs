@@ -33,16 +33,4 @@ public class InfrastructureModifier
     public int getMaxBackups(){
         return maxBackup;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -8,10 +8,10 @@ using InfrastructuresFeatures;
 public class InfrastructuresFeaturesJsonMap:Dictionable
 {
 
-    private int FT_MAX_ANTIVIRUS;
-    private int FT_MAX_FIREWALL;
-    private int FT_MAX_IDPS;
-    private int FT_MAX_BACKUP;
+    public int FT_MAX_ANTIVIRUS;
+    public int FT_MAX_FIREWALL;
+    public int FT_MAX_IDPS;
+    public int FT_MAX_BACKUP;
 
 
     public Dictionary<System.Object, Feature> todict()

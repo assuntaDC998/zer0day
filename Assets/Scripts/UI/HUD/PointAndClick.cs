@@ -13,6 +13,7 @@ public class PointAndClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 200f))
@@ -26,6 +27,6 @@ public class PointAndClick : MonoBehaviour
                 }
             }
         }
-
+*/
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class LaptopController : InfrastructureController
 {
@@ -44,9 +45,8 @@ public class LaptopController : InfrastructureController
     {
         base.Awake();
 
-        string featuresFile = new StreamReader("Assets/Push-To-Data/Feature/Infrastructure/laptop.json").ReadToEnd();
+        string featuresFile = new StreamReader("Assets/PushToData/Features/Infrastructures/laptop.json").ReadToEnd();
         mapper = JsonUtility.FromJson<InfrastructuresFeaturesJsonMap>(featuresFile);
-
         this.features = mapper.todict();
     }
 
@@ -54,4 +54,5 @@ public class LaptopController : InfrastructureController
     {
         base.Update();
     }
+
 }
