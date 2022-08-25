@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NetController : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+public class NetController : InfrastructureController { 
+
+    public override void Awake()
     {
-        
+        base.Awake();
     }
 
-    // Update is called once per frame
-    void Update()
+public override void Update()
     {
-        
+        base.Update();
     }
 }

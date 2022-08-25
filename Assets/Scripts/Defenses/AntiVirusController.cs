@@ -13,7 +13,9 @@ public class AntiVirusController : DefenseController
         mapper = JsonUtility.FromJson<DefensesFeaturesJsonMap>(featuresFile);
 
         this.features = mapper.todict();
+
     }
+  
 
     public override void Update()
     {

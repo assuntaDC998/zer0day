@@ -16,6 +16,7 @@ namespace DefensesFeatures
 
 		public DefenseFeature(System.Object baseValue, FeatureType featureName) : base(baseValue, featureName)
 		{
+           
 		}
 	}
 
@@ -24,6 +25,7 @@ namespace DefensesFeatures
 
         public EfficiencyDefenseFeature(System.Object baseValue, FeatureType featureName) : base(baseValue, featureName)
         {
+            Debug.Log(baseValue);
         }
 
 		public override void performeModifier(Modifier m) 
@@ -48,11 +50,11 @@ namespace DefensesFeatures
 
         public override System.Object initializeFactor()
         {
-            return 0;
+            return 0.0f;
         }
 	}
 
-   public class FalsePositivesDefenseFeature : DefenseFeature
+    public class FalsePositivesDefenseFeature : DefenseFeature
 	{
 
         public FalsePositivesDefenseFeature(System.Object baseValue, FeatureType featureName) : base(baseValue, featureName)
@@ -81,7 +83,7 @@ namespace DefensesFeatures
 
         public override System.Object initializeFactor()
         {
-            return 0;
+            return 0.0f;
         }
 	}
 

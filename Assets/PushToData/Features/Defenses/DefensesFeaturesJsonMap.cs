@@ -10,7 +10,7 @@ public class DefensesFeaturesJsonMap:Dictionable
 
     public float FT_EFFICIENCY;
     public float FT_FALSE_POSITIVES;
-    public float FT_DURATION;
+    public int FT_DURATION;
     public int FT_COST;
 
     public Dictionary<System.Object, Feature> todict()

@@ -2,4 +2,5 @@
 	"FT_EFFICIENCY":"0.7f",
 	"FT_FALSE_POSITIVES":"0.2f",
 	"FT_DURATION":"120"
+	"FT_COST" : "0"
 }
