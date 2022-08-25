@@ -1,0 +1,9 @@
+{
+  "levels": [
+    {
+      "levelID":"1",
+      "dataToComplete": "100",
+      "initialCoins" : "100"
+      }
+  ]
+}

@@ -11,10 +11,10 @@ public class Notification : MonoBehaviour, Notifier
     public int time; 
     void Start()
     {
-        notification = gameObject.GetComponent<TextMeshProUGUI>();
+        notification = gameObject.GetComponentInChildren<TextMeshProUGUI>();
         notification.text = "";
+        InfrastructureController.ElementOverflow += NotifyUser;
     }
-
 
     IEnumerator sendNotification(string text, int time)
     {

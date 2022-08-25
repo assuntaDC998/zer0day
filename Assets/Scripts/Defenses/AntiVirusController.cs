@@ -15,7 +15,7 @@ public class AntiVirusController : DefenseController
         this.features = mapper.todict();
 
     }
-  
+         
 
     public override void Update()
     {

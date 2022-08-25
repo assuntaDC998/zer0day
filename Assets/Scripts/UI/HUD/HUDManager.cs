@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class HUDManager : MonoBehaviour, Notifier
 {
-
-
     [SerializeField]
     Notifier notifier;
 
