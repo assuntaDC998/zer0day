@@ -12,6 +12,9 @@ public enum ScenesIndex {
 
 public enum Tracks
 {
-    MENU_MUSIC_TRACK = 2
+    MASTER_SOUND_1 = 0,
+    MASTER_SOUND_2 = 1,
+    MENU_MUSIC_TRACK = 2,
+    PAUSE_MUSIC_TRACK = 2
 }
 

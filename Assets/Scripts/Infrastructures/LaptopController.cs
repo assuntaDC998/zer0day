@@ -19,14 +19,14 @@ public class LaptopController : InfrastructureController
             if (falsePositives < rnd.Next(100) / 100)
             {
                 //Accept a benign packet
-                packet.Accept();
+                packet.Accept(gameObject);
             }
         }
         else {
             // Accept a malware container packet
             if (efficiency < rnd.Next(100) / 100)
             {
-                packet.Accept();
+                packet.Accept(gameObject);
             }
         }
 

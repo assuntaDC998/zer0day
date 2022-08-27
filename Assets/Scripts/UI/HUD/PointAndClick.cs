@@ -13,20 +13,21 @@ public class PointAndClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit, 200f))
-        {
-            if (hit.transform != null)
+        if( Input.GetMouseButtonDown(0) ){
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 200f))
             {
-                GameObject laptop = hit.transform.gameObject;
-                if (laptop.CompareTag("Laptop"))
+                if (hit.transform != null)
                 {
-                    Debug.Log("Laptop clicked");
+                    GameObject laptop = hit.transform.gameObject;
+                    if (laptop.CompareTag("Laptop"))
+                    {
+                        //oppure invocare un evento passando gameObject come argomento
+                        //GameObject.Find("GameUI").transform.Find("PauseMenu").gameObject.SetActive(true);
+                    }
                 }
-            }
+            }      
         }
-*/
     }
 }

@@ -76,7 +76,8 @@ public class InfrastructureController : Component, DropArea
         //Create new antivirus
         GameObject antiVirus = Instantiate(antiVirus_base);
         defenses.Add(antiVirus.GetComponent<AntiVirusController>());
-        antiVirus.transform.position = gameObject.transform.position;
+        Vector3 position = gameObject.transform.position;
+        antiVirus.transform.position = new Vector3(position.x-0.66f, 0.908f, position.z+0.51f);
         antiVirus.SetActive(true);
     }
 

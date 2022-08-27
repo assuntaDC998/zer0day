@@ -23,12 +23,12 @@ public class MainMenu : MonoBehaviour
 
     public void Continue()
     {
-        
+        // TO COMPLETE
     }
 
     public void PlayGame()
     {
-        
+        // TO COMPLETE
     }
 
     public void Quit()

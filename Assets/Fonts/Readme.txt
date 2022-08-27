@@ -1,20 +1,3 @@
-Hello,
-
-Thank you for downloading
-
-NOTE:
-
-- This font is ONLY for PERSONAL USE. NO COMMERCIAL USE ALLOWED!
-
-- Contact us to purchase the commercial license: Ronindesign.id@gmail.com
-
-- For Corporate use, you must purchase a Corporate license
-
-- Any donation are very appreciated. Paypal account for donations:  https://www.paypal.me/ronindesignff
-
-
-Have question? comments or complaints, please send them to Ronindesign.id@gmail.com
-Follow our Instagram for updates: @ronin_design
-
-Best regard
-RoninDesign
+version https://git-lfs.github.com/spec/v1
+oid sha256:5840a8c94803b19bb3992f71567f7795ad104a82ba092c8b476bcc04aecaa5ab
+size 524

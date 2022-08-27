@@ -9,8 +9,8 @@ using System;
 public class OptionsMenu : MonoBehaviour
 {
 
-    List<string> languages = new List<string>{"English","Italiano"};
-    List<string> resolutions = new List<string> { "854x480", "1280x720", "1600x900", "1920x1080" };
+    private List<string> languages = new List<string>{"English","Italiano"};
+    private List<string> resolutions = new List<string> { "854x480", "1280x720", "1600x900", "1920x1080" };
 
     public float sfx;
     public float master;
@@ -23,15 +23,16 @@ public class OptionsMenu : MonoBehaviour
 
     public bool fullScreenValue;
 
-    TextMeshProUGUI selLanguage;
-    TextMeshProUGUI resolution;
-    CanvasScaler canvasScaler;
-    Slider musicSlider;
-    Slider masterSlider;
-    Slider sfxSlider;
-    Toggle fullScreen;
+    private TextMeshProUGUI selLanguage;
+    private TextMeshProUGUI resolution;
+    private CanvasScaler canvasScaler;
+    private Slider musicSlider;
+    private Slider masterSlider;
+    private Slider sfxSlider;
+    private Toggle fullScreen;
 
-    AudioSource track;
+    private AudioSource track;
+    private List<AudioSource> masterSounds;
 
     void Start()
     {
@@ -42,7 +43,12 @@ public class OptionsMenu : MonoBehaviour
         masterSlider = GameObject.Find("Master slider").gameObject.GetComponent<Slider>();
         sfxSlider = GameObject.Find("Sfx slider").gameObject.GetComponent<Slider>();
         fullScreen = GameObject.Find("Toggle").GetComponent<Toggle>();
-        track = GameObject.Find("AudioManager").GetComponents<AudioSource>()[(int)Tracks.MENU_MUSIC_TRACK];
+        
+        AudioSource[] audioSources = GameObject.Find("AudioManager").GetComponents<AudioSource>();
+        track = audioSources[(int)Tracks.MENU_MUSIC_TRACK];
+        masterSounds = new List<AudioSource>();
+        masterSounds.Add(audioSources[(int)Tracks.MASTER_SOUND_1]);
+        masterSounds.Add(audioSources[(int)Tracks.MASTER_SOUND_2]);
 
         // Load Player prefs
         sfx = PlayerPrefs.GetFloat("Sfx", 1);
@@ -87,7 +93,9 @@ public class OptionsMenu : MonoBehaviour
     }
     public void ManageMasterVolume()
     {
-        // TO COMPLETE
+        master = masterSlider.value;
+        foreach (AudioSource audio in masterSounds)
+            audio.volume = master;
     }
 
     public void ManageMusicVolume()

@@ -39,7 +39,7 @@ public class LevelController : MonoBehaviour
         int currentSceneID = SceneManager.GetActiveScene().buildIndex;
         // Read level configuration
 
-        string featuresFile = new StreamReader("Assets/PushToData/Levels/level.json").ReadToEnd();
+        string featuresFile = new StreamReader("Assets/PushToData/Levels/levels.json").ReadToEnd();
         levels = JsonUtility.FromJson<LevelsJsonMap>(featuresFile);
 
         if (lc == null && currentSceneID != 0)
@@ -90,6 +90,8 @@ public class LevelController : MonoBehaviour
         }
         else { 
             // EXIT LEVEL
+
+            //compromissionbar=sum(compr_i)/n
         }        
     }
 
