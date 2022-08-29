@@ -12,9 +12,6 @@ public class DefenseController : Component
     {
         this.category = "Defense";
         base.Awake();
-       
-        //duration = (int)features[DefensesFeatures.DefenseFeature.FeatureType.FT_DURATION].currentValue;
-        timer = 0;
     }
 
     public override void setFeatures()
@@ -27,11 +24,19 @@ public class DefenseController : Component
 
     }
 
+    public override void Start()
+    {
+        Debug.Log(features.Count);
+        timer = 0;
+        duration = (int)features[DefensesFeatures.DefenseFeature.FeatureType.FT_DURATION].currentValue;
+
+    }
+
     public override void Update()
     {
         base.Update();
         timer += 1;
-        //if (timer > duration) Destroy(gameObject);
+        if (timer > duration) Destroy(gameObject);
 
         // COMPLETE WITH EVENT DESTROY GENERATION
     }

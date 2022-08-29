@@ -5,7 +5,7 @@ using UnityEngine;
 using DefensesFeatures;
 
 [Serializable]
-public class DefensesFeaturesJsonMap:Dictionable
+public class DefensesFeaturesJsonMap: Dictionable
 {
 
     public float FT_EFFICIENCY;

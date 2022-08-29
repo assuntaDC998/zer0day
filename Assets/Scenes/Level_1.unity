@@ -505,7 +505,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7520770693683178543, guid: 0350fecb068e44f1c966b67d562f2c78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0350fecb068e44f1c966b67d562f2c78, type: 3}
 --- !u!1 &320946664
 GameObject:
@@ -2729,7 +2730,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -3620,6 +3621,29 @@ RectTransform:
   m_AnchoredPosition: {x: 304, y: 210}
   m_SizeDelta: {x: 150, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1401914043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3682383379687816821, guid: 4fce334ce84e54e7782145ce05ab2959, type: 3}
+  m_PrefabInstance: {fileID: 1667440980}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1401914050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401914043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9555b6565753e2489d437750f50ad37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  components: []
+  ID: 
+  category: 
+  type: 
+  malwareType: 
+  destination: {fileID: 585357240}
 --- !u!1001 &1430837548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3775,8 +3799,32 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Mail
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3745062239682316432, guid: 57258b90d251c4afb82fee460b4edb6d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 57258b90d251c4afb82fee460b4edb6d, type: 3}
+--- !u!1 &1478822649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4555474114293495247, guid: 57258b90d251c4afb82fee460b4edb6d, type: 3}
+  m_PrefabInstance: {fileID: 1430837548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1478822656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478822649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47cea69fa771f364c82221f7fabe3255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  components: []
+  ID: 
+  category: 
+  type: 
+  malwareType: 
+  destination: {fileID: 585357240}
 --- !u!1 &1484329206
 GameObject:
   m_ObjectHideFlags: 0
@@ -4088,7 +4136,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 03bd54df9fe830c42ab5539fb544a4c1, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4601304419388425002, guid: 4fce334ce84e54e7782145ce05ab2959, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4fce334ce84e54e7782145ce05ab2959, type: 3}
 --- !u!1 &1694420223
 GameObject:
@@ -4406,7 +4455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100%
+  m_text: 0%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fdfbd027a8e142f8910c22d94614510, type: 2}
   m_sharedMaterial: {fileID: -950708679564561160, guid: 3fdfbd027a8e142f8910c22d94614510, type: 2}
@@ -4685,6 +4734,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7250316874241167728, guid: 0350fecb068e44f1c966b67d562f2c78, type: 3}
   m_PrefabInstance: {fileID: 250331798}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1868248232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868248225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec32789d9bbc3143a0d21c6471edadd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  components: []
+  ID: 
+  category: 
+  type: 
+  malwareType: 
+  destination: {fileID: 585357240}
 --- !u!1001 &1963346930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4755,6 +4822,10 @@ PrefabInstance:
     - target: {fileID: 4777658350180048052, guid: 89209633569345d459ea7d4bcda278e4, type: 3}
       propertyPath: m_Name
       value: AntiVirus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4777658350180048052, guid: 89209633569345d459ea7d4bcda278e4, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4777658350180048052, guid: 89209633569345d459ea7d4bcda278e4, type: 3}
       propertyPath: m_IsActive
@@ -5055,7 +5126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maximum: 100
-  current: 100
+  current: 0
   bar: {fileID: 1121080928}
   label: {fileID: 1816172706}
 --- !u!1 &2062462061

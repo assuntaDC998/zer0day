@@ -19,7 +19,7 @@ public class LevelController : MonoBehaviour
 
     // Handle downloaded data
     [HideInInspector] public ProgressBar levelCompletionBar;
-    [HideInInspector] public float downloadedData;
+    [HideInInspector] public float levelCompletion;
 
     [HideInInspector] public ProgressBar locBar;
     [HideInInspector] public float loc;
@@ -62,7 +62,7 @@ public class LevelController : MonoBehaviour
             // reset data and loc 
             levelCompletionBar = GameObject.FindWithTag("LevelBar").GetComponent<ProgressBar>();
             locBar = GameObject.FindWithTag("LocBar").GetComponent<ProgressBar>();
-            downloadedData = 0;
+            levelCompletion = 0;
             loc = 0;
             levelCompletionBar.current = 0;
             locBar.current = 0;
@@ -76,11 +76,12 @@ public class LevelController : MonoBehaviour
 
     public void ModifyCoin(int amount) {
         coins += amount;
+        Debug.Log("Modify Coins: " + coins);
     }
 
-    public void ModifyDataToComplete(int amount)
+    public void ModifyLevelCompletion(int amount)
     {
-        downloadedData += amount;
+        levelCompletion += amount;
     }
 
     public void CheckSceneType()
@@ -97,23 +98,27 @@ public class LevelController : MonoBehaviour
     {
         if (!isLevelCompleted())
         {
+
+            Debug.Log("Level Update");
+
             // Show coins amount
-            coinsText.GetComponent<TextMeshProUGUI>().text = coins.ToString();
+            coinsText.GetComponentInChildren<TextMeshProUGUI>().text = coins.ToString();
             
             // Update data and loc bar
-            levelCompletionBar.current = ((int)(downloadedData / levelCompletionBar.maximum));
-            locBar.current = ((int)(downloadedData / locBar.maximum));
+            levelCompletionBar.current = (int)((float)(levelCompletion / levels.GetLevelByID((int)currentLevelID).targetGB) * 100);
+            locBar.current = ((int)(loc / locBar.maximum));
 
         }
         else { 
             // EXIT LEVEL
+            Debug.Log("Level Completed");
          }        
     }
 
 
     public bool isLevelCompleted() {
 
-        if (downloadedData >= levels.GetLevelByID((int)currentLevelID).targetGB)
+        if (levelCompletion >= levels.GetLevelByID((int)currentLevelID).targetGB)
             return true;
         
         return false;

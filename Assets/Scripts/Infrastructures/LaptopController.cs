@@ -16,16 +16,21 @@ public class LaptopController : InfrastructureController
         PacketController packet = coll.gameObject.GetComponent<PacketController>();
         if (packet.malwareType == "")
         {
-            if (falsePositives < rnd.Next(100) / 100)
+            Debug.Log("IF");
+            if (falsePositives <  ((float)rnd.Next(100)) / 100)
             {
+                Debug.Log("Accept a benign packet");
                 //Accept a benign packet
                 packet.Accept(gameObject);
             }
         }
         else {
+            Debug.Log("ELSE");
+
             // Accept a malware container packet
-            if (efficiency < rnd.Next(100) / 100)
+            if (efficiency < ((float)rnd.Next(100)) / 100)
             {
+                Debug.Log("Accept a malware");
                 packet.Accept(gameObject);
             }
         }

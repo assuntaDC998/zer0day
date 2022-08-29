@@ -25,7 +25,6 @@ namespace DefensesFeatures
 
         public EfficiencyDefenseFeature(System.Object baseValue, FeatureType featureName) : base(baseValue, featureName)
         {
-            Debug.Log(baseValue);
         }
 
 		public override void performeModifier(Modifier m) 
@@ -92,6 +91,7 @@ namespace DefensesFeatures
 
         public DurationDefenseFeature(System.Object baseValue, FeatureType featureName) : base(baseValue, featureName)
         {
+           // Debug.Log("Duration basevalue: " + baseValue);
         }
 
         public override void performeModifier(Modifier m)

@@ -118,11 +118,15 @@ public class InfrastructureController : Component, DropArea
     {
         if(dropped.CompareTag("AntiVirus")){
             int maxAV = (int)features[InfrastructuresFeatures.InfrastructureFeature.FeatureType.FT_MAX_ANTIVIRUS].currentValue;
-            if (activeAntiVirus<maxAV){
-                activeAntiVirus+=1;
+            if (activeAntiVirus < maxAV)
+            {
+                activeAntiVirus += 1;
                 createAntiVirus();
             }
-            else ElementOverflow.Invoke(generateOverflowMex("AV", "AVs", maxAV));
+            else
+            {
+                ElementOverflow.Invoke(generateOverflowMex("AV", "AVs", maxAV));
+            }
            
         }
         else if(dropped.CompareTag("Firewall")){
