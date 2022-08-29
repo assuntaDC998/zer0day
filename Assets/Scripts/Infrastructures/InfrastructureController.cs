@@ -19,12 +19,12 @@ public class InfrastructureController : Component, DropArea
 
     public static event Action<String> ElementOverflow;
     
-    public GameObject antiVirus_base;
+    
+    private GameObject antiVirusModel;
+    private GameObject firewallModel;
 
     public override void Start()
     {
-        //Load Prefab
-        antiVirus_base = Resources.Load("Models/Defenses/AntiVirus") as GameObject;
     }
 
     public override void Awake()
@@ -42,6 +42,10 @@ public class InfrastructureController : Component, DropArea
 
         efficiency = 0;
         falsePositives = 0;
+
+        //Load Prefab
+        antiVirusModel = Resources.Load("Models/Defenses/AntiVirus") as GameObject;
+        firewallModel = Resources.Load("Models/Defenses/FireWall") as GameObject;
     }
 
     public void updateDefensesFeatures()
@@ -74,11 +78,40 @@ public class InfrastructureController : Component, DropArea
 
     private void createAntiVirus() {
         //Create new antivirus
-        GameObject antiVirus = Instantiate(antiVirus_base);
+        GameObject antiVirus = Instantiate(antiVirusModel);
         defenses.Add(antiVirus.GetComponent<AntiVirusController>());
         Vector3 position = gameObject.transform.position;
-        antiVirus.transform.position = new Vector3(position.x-0.66f, 0.908f, position.z+0.51f);
+        antiVirus.transform.position = new Vector3(position.x-0.66f, position.y + 0.908f, position.z-0.48f);
         antiVirus.SetActive(true);
+
+        //HANDLE MORE THAN ONE AV CREATION ON SAME PC
+    }
+
+    private void createFirewall() {
+        GameObject firewall = Instantiate(firewallModel);
+        defenses.Add(firewall.GetComponent<FirewallController>());
+        Vector3 position = gameObject.transform.position;
+        firewall.transform.position = new Vector3(position.x - 0.66f, position.y + 0.908f, position.z - 0.48f);
+        firewall.SetActive(true);
+    }
+
+
+    private String generateOverflowMex(String defense, String defenses, int max) {
+        string message = "No more than ";
+        switch (max) {
+            case 0:
+                message += defense + " not allowed on this element.";
+                break;
+
+            case 1:
+                message += "a single " + defense + " is allowed on this element.";
+                break;
+
+            default:
+                message += max + " " + defenses + " are allowed on this element.";
+                break;
+        }
+        return message;
     }
 
     public void onDrop(GameObject dropped)
@@ -89,20 +122,17 @@ public class InfrastructureController : Component, DropArea
                 activeAntiVirus+=1;
                 createAntiVirus();
             }
-            else{
-                string message = "You can't add more than one antivirus on this element.";
-                ElementOverflow.Invoke(message);
-            }
+            else ElementOverflow.Invoke(generateOverflowMex("AV", "AVs", maxAV));
+           
         }
         else if(dropped.CompareTag("Firewall")){
-            if(activeFirewall<(int)features[InfrastructuresFeatures.InfrastructureFeature.FeatureType.FT_MAX_FIREWALL].currentValue){
+            int maxFW = (int)features[InfrastructuresFeatures.InfrastructureFeature.FeatureType.FT_MAX_FIREWALL].currentValue;
+            if (activeFirewall<maxFW){
                 activeFirewall+=1;
-                //defenses.Add(new FirewallController());
-                //tocomplete
+                createFirewall();
             }
-            else{
-                //toast massimo numero 
-            }
+            else ElementOverflow.Invoke(generateOverflowMex("FW", "FWs", maxFW));
+        
         }
         else if(dropped.CompareTag("IDPS"))
         {
@@ -119,7 +149,6 @@ public class InfrastructureController : Component, DropArea
         else if(dropped.CompareTag("Backup"))
         {
             //definire backup
-
         }
 
         updateDefensesFeatures();

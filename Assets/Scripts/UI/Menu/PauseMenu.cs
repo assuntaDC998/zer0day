@@ -74,7 +74,7 @@ public class PauseMenu : MonoBehaviour
             masterButton.GetComponent<Image>().sprite = masterOff;
             masterState = State.OFF;
         }
-        else if (musicState == State.OFF)
+        else if (masterState == State.OFF)
         {
             foreach (AudioSource audio in masterSounds)
                 audio.volume = masterVolume;

@@ -9,8 +9,8 @@ public class NetController : InfrastructureController {
         base.Awake();
     }
 
-public override void Update()
+    public override void Update()
     {
-        base.Update();
+       base.Update();
     }
 }

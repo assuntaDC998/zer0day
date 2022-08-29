@@ -12,7 +12,10 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
     private Canvas canvas;
     private GameObject duplicate;
     private Vector3 startPosition;
-    
+    private Material transparentMaterial;
+    private Material dropAreaMaterial;
+    private GameObject[] dropAreas;
+
 
     public bool FollowCursor { get; set; } = true;
     public Vector3 StartPosition;
@@ -37,6 +40,11 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         if (!CanDrag) return;
         duplicate = Duplicate();
 
+        foreach (GameObject area in dropAreas)
+        {
+            area.GetComponent<Outline>().enabled = true;
+            //area.GetComponent<MeshRenderer>().material = dropAreaMaterial;
+        }
     }
 
     public void OnDrag(PointerEventData data)
@@ -56,10 +64,15 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
                 hit.collider.gameObject.GetComponent<DropArea>().onDrop(gameObject);
         }
         resetDrop(data);
-
     }
 
     private void resetDrop(PointerEventData data) {
+        foreach (GameObject area in dropAreas)
+        {
+            area.GetComponent<Outline>().enabled = false;
+            //area.GetComponent<MeshRenderer>().material = transparentMaterial;
+        }
+
         Destroy(duplicate);
         rectTransform.anchoredPosition = StartPosition;
     }
@@ -74,6 +87,12 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         rectTransform = GetComponent<RectTransform>();
         canvas = GameObject.Find("GameUI").GetComponent<Canvas>();
         startPosition = rectTransform.position;
+
+        dropAreas = GameObject.FindGameObjectsWithTag("DropArea");
+        transparentMaterial = Resources.Load("Materials/Transparent") as Material;
+        dropAreaMaterial = Resources.Load("Materials/DropArea") as Material;
+
+
     }
 
 

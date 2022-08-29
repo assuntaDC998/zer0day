@@ -12,27 +12,31 @@ public class LevelController : MonoBehaviour
 {
 
     [HideInInspector] public static LevelController lc;
-    [HideInInspector] public int currentLevelID;
 
     //[HideInInspector] public SessionController sc;
     // HUD 
     public GameObject infoCanvas;
 
     // Handle downloaded data
-    [HideInInspector] public GameObject levelCompletionBar;
+    [HideInInspector] public ProgressBar levelCompletionBar;
     [HideInInspector] public float downloadedData;
+
+    [HideInInspector] public ProgressBar locBar;
+    [HideInInspector] public float loc;
 
     // Handle coins level
     [HideInInspector] public GameObject coinsText;
     [HideInInspector] public int coins;
 
     // Handle events and modifiers
-    [HideInInspector] public ModifierJsonMap levelsjson;
+    //[HideInInspector] public ModifierJsonMap levelsjson;
     [HideInInspector] public LevelsJsonMap levels;
 
     [HideInInspector] public ModifierJsonMap modifiersjson;
     [HideInInspector] public EventJsonMap events;
 
+    [SerializeField]
+    public int currentLevelID;
 
     private void Awake()
     {
@@ -42,6 +46,7 @@ public class LevelController : MonoBehaviour
         string featuresFile = new StreamReader("Assets/PushToData/Levels/levels.json").ReadToEnd();
         levels = JsonUtility.FromJson<LevelsJsonMap>(featuresFile);
 
+
         if (lc == null && currentSceneID != 0)
         {
             lc = this;
@@ -50,10 +55,17 @@ public class LevelController : MonoBehaviour
             //sessionController = GameObject.FindWithTag("SessionController");
             //sc = sessionController.GetComponent<SessionController>();
 
-            // READ INIT COINS FROM FILE
-            coins = 0;
-            currentLevelID = 1;
+            // init starting level coins from Json
+            coins = levels.GetLevelByID(currentLevelID).initialCoins;
+            coinsText = GameObject.FindWithTag("Coins");
 
+            // reset data and loc 
+            levelCompletionBar = GameObject.FindWithTag("LevelBar").GetComponent<ProgressBar>();
+            locBar = GameObject.FindWithTag("LocBar").GetComponent<ProgressBar>();
+            downloadedData = 0;
+            loc = 0;
+            levelCompletionBar.current = 0;
+            locBar.current = 0;
         }
         else
         {
@@ -85,20 +97,23 @@ public class LevelController : MonoBehaviour
     {
         if (!isLevelCompleted())
         {
+            // Show coins amount
+            coinsText.GetComponent<TextMeshProUGUI>().text = coins.ToString();
             
+            // Update data and loc bar
+            levelCompletionBar.current = ((int)(downloadedData / levelCompletionBar.maximum));
+            locBar.current = ((int)(downloadedData / locBar.maximum));
 
         }
         else { 
             // EXIT LEVEL
-
-            //compromissionbar=sum(compr_i)/n
-        }        
+         }        
     }
 
 
     public bool isLevelCompleted() {
 
-        if (downloadedData >= levels.getLevelbyID(currentLevelID).dataToComplete)
+        if (downloadedData >= levels.GetLevelByID((int)currentLevelID).targetGB)
             return true;
         
         return false;

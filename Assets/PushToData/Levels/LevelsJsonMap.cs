@@ -9,16 +9,24 @@ public class LevelsJsonMap
 {
     public List<Level> levels;
 
-    public Level getLevelbyID(int levelID)
+    public Level GetLevelByID(int id)
     {
         foreach (Level l in levels)
         {
-            if (l.levelID == levelID)
-            {
+            if (l.levelID == id) {
                 return l;
             }
         }
+        
         return null;
+    }
+
+
+    public override String ToString() {
+        String str = "";
+        foreach(Level l in levels)
+            str += l.ToString() + "\n"; 
+        return str;
     }
 
 
@@ -28,7 +36,13 @@ public class LevelsJsonMap
 public class Level
 {
     public int levelID;
-    public int dataToComplete;
-    public int initalCoins;
+    public int targetGB;
+    public int initialCoins;
+
+
+    public override string ToString()
+    {
+        return "LID: " + levelID + " - TargetGB: " + targetGB + " - Coins: " + initialCoins;
+    }
 
 }

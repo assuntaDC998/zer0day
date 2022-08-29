@@ -34,7 +34,6 @@ public class LaptopController : InfrastructureController
         coll.gameObject.SetActive(false);
         coll.gameObject.transform.position = startPoint.transform.position;
         coll.gameObject.SetActive(true);
-
     }
 
     public override void Awake()

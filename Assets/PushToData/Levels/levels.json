@@ -2,8 +2,8 @@
   "levels": [
     {
       "levelID":"1",
-      "dataToComplete": "100",
-      "initialCoins" : "100"
+      "targetGB": "100",
+      "initialCoins" : "1000"
       }
   ]
 }
