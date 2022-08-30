@@ -43,7 +43,6 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         foreach (GameObject area in dropAreas)
         {
             area.GetComponent<Outline>().enabled = true;
-            //area.GetComponent<MeshRenderer>().material = dropAreaMaterial;
         }
     }
 
@@ -61,7 +60,7 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         if (Physics.Raycast(ray, out hit, 1000) && hit.collider!=null)
         {
             if(hit.collider.gameObject.GetComponent<DropArea>()!=null)
-                hit.collider.gameObject.GetComponent<DropArea>().onDrop(gameObject);
+                hit.collider.gameObject.GetComponent<DropArea>().OnDrop(gameObject);
         }
         resetDrop(data);
     }
@@ -70,7 +69,6 @@ public class DraggableComponent : MonoBehaviour, IInitializePotentialDragHandler
         foreach (GameObject area in dropAreas)
         {
             area.GetComponent<Outline>().enabled = false;
-            //area.GetComponent<MeshRenderer>().material = transparentMaterial;
         }
 
         Destroy(duplicate);

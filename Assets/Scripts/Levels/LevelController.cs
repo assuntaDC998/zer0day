@@ -76,7 +76,6 @@ public class LevelController : MonoBehaviour
 
     public void ModifyCoin(int amount) {
         coins += amount;
-        Debug.Log("Modify Coins: " + coins);
     }
 
     public void ModifyLevelCompletion(int amount)
@@ -123,6 +122,8 @@ public class LevelController : MonoBehaviour
         
         return false;
     }
+
+
 
     public void ParametersReset()
     {

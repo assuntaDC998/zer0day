@@ -38,11 +38,12 @@ public class Level
     public int levelID;
     public int targetGB;
     public int initialCoins;
+    public int maxBackups;
 
 
     public override string ToString()
     {
-        return "LID: " + levelID + " - TargetGB: " + targetGB + " - Coins: " + initialCoins;
+        return "LID: " + levelID + " - TargetGB: " + targetGB + " - Coins: " + initialCoins + " - Backup: " + maxBackups;
     }
 
 }

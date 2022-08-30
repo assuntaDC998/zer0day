@@ -3,7 +3,8 @@
     {
       "levelID":"1",
       "targetGB": "100000",
-      "initialCoins" : "1000"
+      "initialCoins" : "1000",
+      "maxBackups": "5"	
       }
   ]
 }

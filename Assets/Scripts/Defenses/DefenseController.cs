@@ -29,7 +29,6 @@ public class DefenseController : Component
         Debug.Log(features.Count);
         timer = 0;
         duration = (int)features[DefensesFeatures.DefenseFeature.FeatureType.FT_DURATION].currentValue;
-
     }
 
     public override void Update()

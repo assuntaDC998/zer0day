@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PointAndClick : MonoBehaviour
 {
+
+    private ShopManager shopManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        shopManager = GameObject.Find("ShopManager").GetComponent<ShopManager>();
     }
 
     // Update is called once per frame
@@ -20,11 +22,11 @@ public class PointAndClick : MonoBehaviour
             {
                 if (hit.transform != null)
                 {
-                    GameObject laptop = hit.transform.gameObject;
-                    if (laptop.CompareTag("Laptop"))
+                    GameObject pointed = hit.transform.gameObject;
+                    Debug.Log("CLick " + pointed.tag);
+                    if (pointed.CompareTag("Defense"))
                     {
-                        //oppure invocare un evento passando gameObject come argomento
-                        //GameObject.Find("GameUI").transform.Find("PauseMenu").gameObject.SetActive(true);
+                        shopManager.openShop(pointed.tag);
                     }
                 }
             }      

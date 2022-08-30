@@ -9,6 +9,8 @@ public class LaptopController : InfrastructureController
 {
     [SerializeField]
     public GameObject startPoint;
+    private bool activeAntiVirus;
+    private GameObject antiVirusModel;
 
     private void OnCollisionEnter(Collision coll)
     {
@@ -44,15 +46,37 @@ public class LaptopController : InfrastructureController
     public override void Awake()
     {
         base.Awake();
-
-        string featuresFile = new StreamReader("Assets/PushToData/Features/Infrastructures/laptop.json").ReadToEnd();
-        mapper = JsonUtility.FromJson<InfrastructuresFeaturesJsonMap>(featuresFile);
-        this.features = mapper.todict();
+        activeAntiVirus = false;
+        antiVirusModel = Resources.Load("Models/Defenses/AntiVirus") as GameObject;
     }
 
     public override void Update()
     {
         base.Update();
+    }
+
+    public override void OnDrop(GameObject dropped)
+    {
+        if (dropped.CompareTag("AntiVirus"))
+        {
+            if (!activeAntiVirus)
+            {
+                activeAntiVirus = true;
+                createAntiVirus();
+            }
+            else handleElementOverflow(generateOverflowMex("AV", "AVs", 1));
+            
+            updateDefensesFeatures();
+        }
+    }
+
+    private void createAntiVirus()
+    {
+        GameObject antiVirus = Instantiate(antiVirusModel);
+        defenses.Add(antiVirus.GetComponent<AntiVirusController>());
+        Vector3 position = gameObject.transform.position;
+        antiVirus.transform.position = new Vector3(position.x - 0.66f, position.y + 0.908f, position.z - 0.48f);
+        antiVirus.SetActive(true);
     }
 
 }

@@ -1,5 +1,5 @@
 using UnityEngine;
 
 public interface DropArea{
-	void onDrop(GameObject dropped);
+	public void OnDrop(GameObject dropped);
 }

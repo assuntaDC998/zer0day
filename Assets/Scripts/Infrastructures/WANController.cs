@@ -11,9 +11,6 @@ public class WANController : NetController
     {
         base.Awake();
 
-        string featuresFile = new StreamReader("Assets/PushToData/Features/Infrastructures/externalnet.json").ReadToEnd();
-        mapper = JsonUtility.FromJson<InfrastructuresFeaturesJsonMap>(featuresFile);
-        this.features = mapper.todict();
     }
 
     public override void Update()
